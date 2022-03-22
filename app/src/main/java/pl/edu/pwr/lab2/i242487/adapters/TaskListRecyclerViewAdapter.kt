@@ -26,6 +26,8 @@ class TaskListRecyclerViewAdapter(private var context: Context,
     class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
         var ivIcon: ImageView? = null
         var tvTitle: TextView? = null
+        var tvDueDate: TextView? = null
+        var ivStatus: ImageView? = null
     }
 
 }
