@@ -12,6 +12,8 @@ class Utils {
         const val SP_NAME = "tasks"
         const val SP_KEY_TASK_LIST = "taskList"
 
+        const val DATE_FORMAT_dd_MM_yyyy = "dd.MM.yyyy"
+
         fun <T> setList(spEditor: SharedPreferences.Editor, spKey: String, list: MutableList<T>) {
             val gson = Gson()
             val jsonString = gson.toJson(list)

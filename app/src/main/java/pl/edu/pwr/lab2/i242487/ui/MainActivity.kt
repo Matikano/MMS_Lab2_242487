@@ -1,4 +1,4 @@
-package pl.edu.pwr.lab2.i242487
+package pl.edu.pwr.lab2.i242487.ui
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -6,11 +6,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import pl.edu.pwr.lab2.i242487.R
+import pl.edu.pwr.lab2.i242487.adapters.TaskListAdapter
 import pl.edu.pwr.lab2.i242487.dataObjects.Task
 import pl.edu.pwr.lab2.i242487.databinding.ActivityMainBinding
+import pl.edu.pwr.lab2.i242487.ui.dialogs.AddTaskDialogFragment
 import pl.edu.pwr.lab2.i242487.utils.Utils
-import java.util.prefs.AbstractPreferences
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var taskList: MutableList<Task>
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var rvAdapter:
+    lateinit var rvAdapter: TaskListAdapter
     private lateinit var viewManager: RecyclerView.LayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +34,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setUpViews()
+
         sharedPreferences = getSharedPreferences(Utils.SP_NAME, Context.MODE_PRIVATE)
         spEditor = sharedPreferences.edit()
     }
@@ -38,12 +43,25 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         loadTaskList()
+        setUpAdapters()
     }
 
-    private fun loadTaskList() {
-        taskList = Utils.getTaskList(sharedPreferences);
+    private fun setUpViews() {
+        recyclerView = binding.rvTaskList
     }
 
+    private fun setUpAdapters() {
+        viewManager = LinearLayoutManager(this)
+        rvAdapter = TaskListAdapter(this, taskList)
+        recyclerView.apply {
+            layoutManager = viewManager
+            adapter = rvAdapter
+        }
+    }
+
+    fun loadTaskList() {
+        taskList = Utils.getTaskList(sharedPreferences)
+    }
 
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -59,10 +77,10 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-
-
     private fun showAddTaskDialog() {
-        TODO("Not yet implemented")
+        AddTaskDialogFragment().apply {
+            show(supportFragmentManager, AddTaskDialogFragment.TAG)
+        }
     }
 
 

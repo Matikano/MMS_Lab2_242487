@@ -2,11 +2,11 @@ package pl.edu.pwr.lab2.i242487.dataObjects
 
 import java.util.*
 
-data class Task(private var title: String,
-                private var description: String,
-                private var dueDate: Date,
-                private var status: Int,
-                private var type: Int){
+data class Task(var title: String,
+                var description: String,
+                var dueDate: Date,
+                var status: Int,
+                var type: Int){
 
     companion object {
         const val STATUS_DONE = 1

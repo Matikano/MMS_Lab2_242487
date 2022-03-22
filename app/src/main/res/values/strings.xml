@@ -1,4 +1,22 @@
 <resources>
     <string name="app_name">MMS_Lab2_242487</string>
     <string name="menu_item_add">Add task</string>
+    <string name="tv_dialog_title">Add new Task</string>
+    <string name="tiet_hint_title">Title</string>
+    <string name="helper_text_required">Required</string>
+    <string name="tiet_hint_description">Description</string>
+    <string name="et_hint_due_date">Due date</string>
+    <string name="tiet_hint_due_date">Due date</string>
+    <string name="btn_date_picker">Pick date</string>
+    <string name="rb_email">Email</string>
+    <string name="rb_phone">Phone</string>
+    <string name="rb_meeting">Meeting</string>
+    <string name="rb_todo">TODO</string>
+    <string name="tv_label_type">Type</string>
+    <string name="btn_add_task">Create Task</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="title_validation_error">Please enter a title</string>
+    <string name="due_date_validation_error">Please pick a date</string>
+    <string name="date_picker_title">Select Due Date</string>
+    <string name="dialog_due_date">%1$s</string>
 </resources>
