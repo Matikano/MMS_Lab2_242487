@@ -8,10 +8,10 @@
     <string name="et_hint_due_date">Due date</string>
     <string name="tiet_hint_due_date">Due date</string>
     <string name="btn_date_picker">Pick date</string>
-    <string name="rb_email">Email</string>
-    <string name="rb_phone">Phone</string>
-    <string name="rb_meeting">Meeting</string>
-    <string name="rb_todo">TODO</string>
+    <string name="task_type_email">Email</string>
+    <string name="task_type_phone">Phone</string>
+    <string name="task_type_meeting">Meeting</string>
+    <string name="task_type_todo">TODO</string>
     <string name="tv_label_type">Type</string>
     <string name="btn_add_task">Create Task</string>
     <string name="btn_cancel">Cancel</string>
@@ -22,4 +22,8 @@
     <string name="task_details_label">Task Details</string>
     <string name="cvtvTitleLabel">Title</string>
     <string name="cvtvTypeLabel">Type</string>
+    <string name="cvtvDescriptionLabel">Description</string>
+    <string name="cvtvStatusLabel">Status</string>
+    <string name="task_status_done">Done</string>
+    <string name="task_status_ongoing">Ongoing</string>
 </resources>

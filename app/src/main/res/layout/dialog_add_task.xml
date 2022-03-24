@@ -124,7 +124,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/small_margin"
             android:paddingHorizontal="@dimen/small_margin"
-            android:text="@string/rb_email" />
+            android:text="@string/task_type_email" />
 
         <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/rbPhone"
@@ -133,7 +133,7 @@
             android:layout_marginHorizontal="@dimen/small_margin"
             android:paddingHorizontal="@dimen/small_margin"
 
-            android:text="@string/rb_phone" />
+            android:text="@string/task_type_phone" />
 
         <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/rbMeeting"
@@ -141,7 +141,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/small_margin"
             android:paddingHorizontal="@dimen/small_margin"
-            android:text="@string/rb_meeting" />
+            android:text="@string/task_type_meeting" />
 
         <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/rbTodo"
@@ -149,7 +149,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/small_margin"
             android:paddingHorizontal="@dimen/small_margin"
-            android:text="@string/rb_todo" />
+            android:text="@string/task_type_todo" />
     </RadioGroup>
 
     <Button

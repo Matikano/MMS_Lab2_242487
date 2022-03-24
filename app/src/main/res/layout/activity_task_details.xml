@@ -11,18 +11,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/big_margin"
-        android:text="@string/task_details_label"
-        android:textStyle="bold"
+        android:text="Call mom"
         android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cvTitle"
+        android:id="@+id/cvStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/big_margin"
         android:layout_marginTop="@dimen/big_margin"
 
 
@@ -36,37 +35,47 @@
         app:layout_constraintTop_toBottomOf="@+id/tvLabel">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clcvTitle"
+            android:id="@+id/clcvStatus"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/cvtvTitleLabel"
+                android:id="@+id/cvtvStatusLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/big_margin"
                 android:layout_marginTop="@dimen/basic_margin"
-                android:text="@string/cvtvTitleLabel"
+                android:text="@string/cvtvStatusLabel"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <ImageView
+                android:id="@+id/cvivStatusIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_marginEnd="@dimen/big_margin"
+                android:layout_marginBottom="@dimen/basic_margin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cvtvStatusLabel"
+                app:srcCompat="@drawable/ic_in_progress_24" />
+
             <TextView
-                android:id="@+id/cvtvLabel"
+                android:id="@+id/cvtvStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
                 android:layout_marginStart="@dimen/big_margin"
-                android:layout_marginTop="@dimen/small_margin"
-                android:layout_marginEnd="@dimen/big_margin"
-                android:layout_marginBottom="@dimen/basic_margin"
-                android:text="Call Mom"
+                android:layout_marginEnd="@dimen/small_margin"
+                android:text="Ongoing"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/cvtvTitleLabel"
-                app:layout_constraintTop_toBottomOf="@+id/cvtvTitleLabel" />
+                app:layout_constraintBottom_toBottomOf="@+id/cvivStatusIcon"
+                app:layout_constraintEnd_toStartOf="@+id/cvivStatusIcon"
+                app:layout_constraintStart_toEndOf="@+id/cvtvStatusLabel"
+                app:layout_constraintTop_toTopOf="@+id/cvivStatusIcon" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
@@ -79,7 +88,6 @@
 
 
         android:layout_marginTop="@dimen/big_margin"
-        android:layout_marginEnd="@dimen/big_margin"
         app:cardCornerRadius="20dp"
         app:cardElevation="10dp"
         app:cardMaxElevation="12dp"
@@ -112,26 +120,83 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
                 android:layout_marginStart="@dimen/basic_margin"
-                android:layout_marginEnd="@dimen/big_margin"
-                android:text="@string/rb_phone"
+                android:layout_marginEnd="@dimen/small_margin"
+                android:text="@string/task_type_phone"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="@+id/cvivTypeIcon"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/cvivTypeIcon"
+                app:layout_constraintEnd_toStartOf="@+id/cvivTypeIcon"
+                app:layout_constraintStart_toEndOf="@+id/cvtvTypeLabel"
                 app:layout_constraintTop_toTopOf="@+id/cvivTypeIcon" />
 
             <ImageView
                 android:id="@+id/cvivTypeIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/basic_margin"
                 android:layout_marginTop="@dimen/small_margin"
+                android:layout_marginEnd="@dimen/big_margin"
                 android:layout_marginBottom="@dimen/basic_margin"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/cvtvTypeLabel"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cvtvTypeLabel"
                 app:srcCompat="@drawable/ic_phone_24" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+
+        app:cardCornerRadius="20dp"
+        app:cardElevation="10dp"
+        app:cardMaxElevation="12dp"
+
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvType">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clcvDescription"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/cvtvDescriptionLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/big_margin"
+                android:layout_marginTop="@dimen/basic_margin"
+                android:text="@string/cvtvDescriptionLabel"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/cvtvDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_marginStart="@dimen/big_margin"
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_marginEnd="@dimen/big_margin"
+                android:layout_marginBottom="@dimen/basic_margin"
+                android:ellipsize="end"
+                android:text="She wanteds to talk about some important stuff"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cvtvDescriptionLabel"
+                app:layout_constraintTop_toBottomOf="@+id/cvtvDescriptionLabel" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

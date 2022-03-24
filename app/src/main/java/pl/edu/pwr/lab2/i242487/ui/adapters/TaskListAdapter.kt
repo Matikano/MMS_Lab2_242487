@@ -43,7 +43,7 @@ class TaskListAdapter(private var context: Context,
         }
     }
 
-    class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
+    class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!), View.OnClickListener {
         var ivIcon: ImageView? = null
         var ivStatus: ImageView? = null
         var tvTitle: TextView? = null
@@ -54,6 +54,10 @@ class TaskListAdapter(private var context: Context,
             ivStatus = itemView?.findViewById(R.id.ivStatusIcon)
             tvTitle = itemView?.findViewById(R.id.tvTitle)
             tvDueDate = itemView?.findViewById(R.id.tvDueDate)
+        }
+
+        override fun onClick(v: View?) {
+
         }
     }
 

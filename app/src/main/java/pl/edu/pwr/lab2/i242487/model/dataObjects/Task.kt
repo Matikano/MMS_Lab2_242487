@@ -1,12 +1,13 @@
 package pl.edu.pwr.lab2.i242487.model.dataObjects
 
+import java.io.Serializable
 import java.util.*
 
 data class Task(var title: String,
                 var description: String,
                 var dueDate: Date,
                 var status: Int,
-                var type: Int){
+                var type: Int) : Serializable{
 
     companion object {
         const val STATUS_DONE = 1
