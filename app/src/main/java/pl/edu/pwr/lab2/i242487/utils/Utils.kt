@@ -3,7 +3,7 @@ package pl.edu.pwr.lab2.i242487.utils
 import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import pl.edu.pwr.lab2.i242487.dataObjects.Task
+import pl.edu.pwr.lab2.i242487.model.dataObjects.Task
 
 class Utils {
 

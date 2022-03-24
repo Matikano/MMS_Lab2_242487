@@ -1,4 +1,4 @@
-package pl.edu.pwr.lab2.i242487.adapters
+package pl.edu.pwr.lab2.i242487.ui.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import pl.edu.pwr.lab2.i242487.R
-import pl.edu.pwr.lab2.i242487.dataObjects.Task
+import pl.edu.pwr.lab2.i242487.model.dataObjects.Task
 import pl.edu.pwr.lab2.i242487.utils.Utils
 import java.text.SimpleDateFormat
 import java.util.*

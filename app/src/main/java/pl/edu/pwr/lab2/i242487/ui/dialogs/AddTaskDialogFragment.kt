@@ -3,23 +3,19 @@ package pl.edu.pwr.lab2.i242487.ui.dialogs
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.datepicker.MaterialDatePicker
-import com.google.android.material.timepicker.MaterialTimePicker
 import pl.edu.pwr.lab2.i242487.R
-import pl.edu.pwr.lab2.i242487.dataObjects.Task
+import pl.edu.pwr.lab2.i242487.model.dataObjects.Task
 import pl.edu.pwr.lab2.i242487.databinding.DialogAddTaskBinding
-import pl.edu.pwr.lab2.i242487.ui.MainActivity
 import pl.edu.pwr.lab2.i242487.utils.Utils
 import java.text.SimpleDateFormat
 import java.util.*
-import java.util.logging.SimpleFormatter
 
-class AddTaskDialogFragment() : DialogFragment() {
+class AddTaskDialogFragment(private val dialogCallback: AddTaskDialogFragmentCallback) : DialogFragment() {
 
     private lateinit var binding: DialogAddTaskBinding
 
@@ -38,7 +34,7 @@ class AddTaskDialogFragment() : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DialogAddTaskBinding.inflate(inflater, container, false)
+        binding = DialogAddTaskBinding.inflate(inflater)
 
         setButtonListeners()
 
@@ -51,7 +47,7 @@ class AddTaskDialogFragment() : DialogFragment() {
     private fun setButtonListeners() {
 
         binding.btnCancel.setOnClickListener {
-            dismiss()
+            dialog?.cancel()
         }
 
         binding.btnAddTask.setOnClickListener {
@@ -68,24 +64,13 @@ class AddTaskDialogFragment() : DialogFragment() {
                     binding.tietTitle.text.toString(),
                     binding.tietDescription.text.toString(),
                     dueDate!!,
-                    type,
-                    Task.STATUS_NOT_DONE
+                    Task.STATUS_NOT_DONE,
+                    type
                 )
 
-                val taskList = Utils.getTaskList(sharedPreferences).apply {
-                    add(task)
-                }
+                dialogCallback.onNewTaskCreated(task)
 
-                Utils.setList(spEditor,Utils.SP_KEY_TASK_LIST, taskList)
-
-                val context = requireContext()
-
-                if(context is MainActivity) {
-                    context.loadTaskList()
-                    context.rvAdapter.notifyItemInserted(context.rvAdapter.itemCount)
-                }
-
-                dismiss()
+                dialog?.cancel()
             }
         }
 
@@ -141,6 +126,11 @@ class AddTaskDialogFragment() : DialogFragment() {
 
     private fun validateFields(): Boolean {
         return validateTitle() && validateDueDate() && validateTypeSelection()
+    }
+
+
+    fun interface AddTaskDialogFragmentCallback {
+        fun onNewTaskCreated(task: Task)
     }
 
 

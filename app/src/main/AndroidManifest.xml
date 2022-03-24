@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="pl.edu.pwr.lab2.i242487">
+    package="pl.edu.pwr.lab2.i242487" >
 
     <application
         android:allowBackup="true"
@@ -8,10 +8,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MMS_Lab2_242487">
+        android:theme="@style/Theme.MMS_Lab2_242487" >
         <activity
-            android:name=".ui.MainActivity"
-            android:exported="true">
+            android:name=".ui.activities.TaskDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.MainActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

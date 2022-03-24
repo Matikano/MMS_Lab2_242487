@@ -19,4 +19,7 @@
     <string name="due_date_validation_error">Please pick a date</string>
     <string name="date_picker_title">Select Due Date</string>
     <string name="dialog_due_date">%1$s</string>
+    <string name="task_details_label">Task Details</string>
+    <string name="cvtvTitleLabel">Title</string>
+    <string name="cvtvTypeLabel">Type</string>
 </resources>

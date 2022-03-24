@@ -1,4 +1,4 @@
-package pl.edu.pwr.lab2.i242487.dataObjects
+package pl.edu.pwr.lab2.i242487.model.dataObjects
 
 import java.util.*
 

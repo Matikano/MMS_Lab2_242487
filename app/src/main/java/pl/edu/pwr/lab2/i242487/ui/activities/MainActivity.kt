@@ -1,4 +1,4 @@
-package pl.edu.pwr.lab2.i242487.ui
+package pl.edu.pwr.lab2.i242487.ui.activities
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -9,13 +9,13 @@ import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import pl.edu.pwr.lab2.i242487.R
-import pl.edu.pwr.lab2.i242487.adapters.TaskListAdapter
-import pl.edu.pwr.lab2.i242487.dataObjects.Task
+import pl.edu.pwr.lab2.i242487.ui.adapters.TaskListAdapter
+import pl.edu.pwr.lab2.i242487.model.dataObjects.Task
 import pl.edu.pwr.lab2.i242487.databinding.ActivityMainBinding
 import pl.edu.pwr.lab2.i242487.ui.dialogs.AddTaskDialogFragment
 import pl.edu.pwr.lab2.i242487.utils.Utils
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(){
 
     private lateinit var binding: ActivityMainBinding;
 
@@ -25,8 +25,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var taskList: MutableList<Task>
 
     private lateinit var recyclerView: RecyclerView
-    lateinit var rvAdapter: TaskListAdapter
     private lateinit var viewManager: RecyclerView.LayoutManager
+    private lateinit var rvAdapter: TaskListAdapter
+
+    private lateinit var addTaskDialogCallback: AddTaskDialogFragment.AddTaskDialogFragmentCallback
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,10 +46,19 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         loadTaskList()
         setUpAdapters()
+        setUpCallbacks()
     }
 
     private fun setUpViews() {
         recyclerView = binding.rvTaskList
+    }
+
+    private fun setUpCallbacks() {
+        addTaskDialogCallback = AddTaskDialogFragment.AddTaskDialogFragmentCallback { task ->
+            taskList.add(task)
+            Utils.setList(spEditor, Utils.SP_KEY_TASK_LIST, taskList)
+            rvAdapter.notifyItemInserted(rvAdapter.itemCount - 1)
+        }
     }
 
     private fun setUpAdapters() {
@@ -59,7 +70,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun loadTaskList() {
+    private fun loadTaskList() {
         taskList = Utils.getTaskList(sharedPreferences)
     }
 
@@ -78,10 +89,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showAddTaskDialog() {
-        AddTaskDialogFragment().apply {
+        AddTaskDialogFragment(addTaskDialogCallback).apply {
             show(supportFragmentManager, AddTaskDialogFragment.TAG)
         }
     }
-
 
 }
