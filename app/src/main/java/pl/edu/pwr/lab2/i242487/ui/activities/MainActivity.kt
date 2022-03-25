@@ -1,11 +1,13 @@
 package pl.edu.pwr.lab2.i242487.ui.activities
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import pl.edu.pwr.lab2.i242487.R
@@ -59,14 +61,47 @@ class MainActivity : AppCompatActivity(){
             Utils.setList(spEditor, Utils.SP_KEY_TASK_LIST, taskList)
             rvAdapter.notifyItemInserted(rvAdapter.itemCount - 1)
         }
+
+
     }
 
     private fun setUpAdapters() {
         viewManager = LinearLayoutManager(this)
-        rvAdapter = TaskListAdapter(this, taskList)
+        rvAdapter = TaskListAdapter(this, taskList).apply {
+            onItemClick = { task ->
+                val intent = Intent(this@MainActivity, TaskDetailsActivity::class.java).apply {
+                    putExtra(TaskDetailsActivity.BUNDLE_KEY_TASK, task)
+                }
+                startActivity(intent)
+            }
+        }
+
+        val swipeGesture = object : TaskListAdapter.SwipeGesture(this) {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                when(direction) {
+                    ItemTouchHelper.RIGHT ->{
+                        rvAdapter.removeItem(viewHolder.adapterPosition)
+                        Utils.setList(spEditor, Utils.SP_KEY_TASK_LIST, taskList)
+
+                    }
+
+                    ItemTouchHelper.LEFT -> {
+                        rvAdapter.markAsDone(viewHolder.adapterPosition)
+                        Utils.setList(spEditor, Utils.SP_KEY_TASK_LIST, taskList)
+                    }
+
+                }
+            }
+        }
+
+        ItemTouchHelper(swipeGesture).apply {
+            attachToRecyclerView(recyclerView)
+        }
+
         recyclerView.apply {
             layoutManager = viewManager
             adapter = rvAdapter
+
         }
     }
 
