@@ -14,12 +14,13 @@ import pl.edu.pwr.lab2.i242487.R
 import pl.edu.pwr.lab2.i242487.ui.adapters.TaskListAdapter
 import pl.edu.pwr.lab2.i242487.model.dataObjects.Task
 import pl.edu.pwr.lab2.i242487.databinding.ActivityMainBinding
+import pl.edu.pwr.lab2.i242487.databinding.ListItemTaskBinding
 import pl.edu.pwr.lab2.i242487.ui.dialogs.AddTaskDialogFragment
 import pl.edu.pwr.lab2.i242487.utils.Utils
 
 class MainActivity : AppCompatActivity(){
 
-    private lateinit var binding: ActivityMainBinding;
+    private lateinit var binding: ActivityMainBinding
 
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var spEditor: SharedPreferences.Editor
@@ -101,7 +102,6 @@ class MainActivity : AppCompatActivity(){
         recyclerView.apply {
             layoutManager = viewManager
             adapter = rvAdapter
-
         }
     }
 

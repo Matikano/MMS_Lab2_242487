@@ -67,6 +67,7 @@ class TaskListAdapter(private var context: Context,
         var tvTitle: TextView? = null
         var tvDueDate: TextView? = null
 
+
         init {
             ivIcon = itemView?.findViewById(R.id.ivTypeIcon)
             ivStatus = itemView?.findViewById(R.id.ivStatusIcon)
