@@ -29,8 +29,8 @@
         app:cardElevation="10dp"
         app:cardMaxElevation="12dp"
         app:cardPreventCornerOverlap="true"
-        app:cardUseCompatPadding="true"
 
+        app:cardUseCompatPadding="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvLabel">
 
@@ -68,13 +68,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
-                android:layout_marginStart="@dimen/big_margin"
+                android:layout_marginStart="32dp"
                 android:layout_marginEnd="@dimen/small_margin"
                 android:text="Ongoing"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="@+id/cvivStatusIcon"
                 app:layout_constraintEnd_toStartOf="@+id/cvivStatusIcon"
-                app:layout_constraintStart_toEndOf="@+id/cvtvStatusLabel"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/cvivStatusIcon" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -119,13 +119,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
-                android:layout_marginStart="@dimen/basic_margin"
+                android:layout_marginStart="32dp"
                 android:layout_marginEnd="@dimen/small_margin"
                 android:text="@string/task_type_phone"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="@+id/cvivTypeIcon"
                 app:layout_constraintEnd_toStartOf="@+id/cvivTypeIcon"
-                app:layout_constraintStart_toEndOf="@+id/cvtvTypeLabel"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/cvivTypeIcon" />
 
             <ImageView
@@ -188,6 +188,7 @@
                 android:layout_marginBottom="@dimen/basic_margin"
                 android:ellipsize="end"
                 android:text="She wanteds to talk about some important stuff"
+                android:textAlignment="textEnd"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
